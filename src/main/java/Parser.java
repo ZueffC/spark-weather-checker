@@ -2,7 +2,6 @@ import  org.jsoup.*;
 import org.jsoup.nodes.*;
 
 import java.io.IOException;
-import java.lang.*;
 
 public class Parser {
     public static String get_worldweather(String url) throws IOException {
