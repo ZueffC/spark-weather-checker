@@ -30,13 +30,13 @@ public class Main {
         
         post("/", (req, res) -> {
             String city_name = req.queryParams("city_name").toLowerCase();
-            var result = cities.get(city_name);
+            String[] result = cities.get(city_name);
 
             if(result.toString().length() > 10) {
                 System.out.println(result);
-                var yandex_res = Parser.get_yandex(result[0]);
-                var gismeteo_res = Parser.get_gismetio(result[1]);
-                var world_weather_res = Parser.get_worldweather(result[2]);
+                String yandex_res = Parser.get_yandex(result[0]);
+                String gismeteo_res = Parser.get_gismetio(result[1]);
+                String world_weather_res = Parser.get_worldweather(result[2]);
 
                 model.put("ww", world_weather_res);
                 model.put("gis", gismeteo_res);
@@ -47,6 +47,7 @@ public class Main {
 
             return new ModelAndView(model, "result");
         }, new JadeTemplateEngine());
+
     }
 
     static int getHerokuAssignedPort() {
