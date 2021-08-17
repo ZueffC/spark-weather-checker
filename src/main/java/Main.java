@@ -15,8 +15,6 @@ public class Main {
     static Dictionary<String, String[]> cities = new Hashtable<>();
     static Map<String, Object> model = new HashMap<>();
     
-    staticFiles.location("/public");
-    
     public static void main(String[] args) {
         port(getHerokuAssignedPort());
         
@@ -24,9 +22,8 @@ public class Main {
         cities.put("приозерск",  priozersk);
         cities.put("сортавала", sortavala);
         cities.put("спб", spb);
-
-        //sdsd // Static files
-       
+        staticFiles.location("/public");
+        
         get("/", (req, res) ->
             new ModelAndView(model, "index"), new JadeTemplateEngine()
         );
