@@ -27,6 +27,26 @@ public class Main {
         get("/", (req, res) ->
             new ModelAndView(model, "index"), new JadeTemplateEngine()
         );
+        
+        post("/", (req, res) -> {
+            String city_name = req.queryParams("city_name").toLowerCase();
+            var result = cities.get(city_name);
+
+            if(result.toString().length() > 10) {
+                System.out.println(result);
+                var yandex_res = Parser.get_yandex(result[0]);
+                var gismeteo_res = Parser.get_gismetio(result[1]);
+                var world_weather_res = Parser.get_worldweather(result[2]);
+
+                model.put("ww", world_weather_res);
+                model.put("gis", gismeteo_res);
+                model.put("yan", yandex_res);
+            } else {
+                model.put("result", "Error while request!");
+            }
+
+            return new ModelAndView(model, "result");
+        }, new JadeTemplateEngine());
     }
 
     static int getHerokuAssignedPort() {
