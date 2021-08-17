@@ -23,7 +23,7 @@ public class Main {
         cities.put("сортавала", sortavala);
         cities.put("спб", spb);
 
-        staticFiles.location("/public"); // Static files
+        //staticFiles.location("/public"); // Static files
        
         get("/", (req, res) ->
             new ModelAndView(model, "index"), new JadeTemplateEngine()
