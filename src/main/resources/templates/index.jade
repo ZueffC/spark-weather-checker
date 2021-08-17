@@ -1,0 +1,9 @@
+extends layout
+block main
+    include header
+    .row.container(style='margin-top: 1%;')
+      form(method='POST', action="/")
+        .col.s6
+          input(type='text' name='city_name')
+        .col.s2
+          input.btn.red.darken-1(type='submit')

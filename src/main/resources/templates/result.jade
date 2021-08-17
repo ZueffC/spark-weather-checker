@@ -1,0 +1,34 @@
+extends layout
+
+block head
+    link(rel='stylesheet', href='css/styles.css')
+    link(rel='stylesheet', href='css/ww-styles.css')
+    script(src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.slim.min.js")
+
+block main
+    include header
+    br
+    center
+      .row
+
+        .col.s12.m4
+          .card.blue-grey.darken-1
+            .card-content.white-text
+              span.card-title Gismetio
+              |             !{ gis }
+
+        .col.s12.m4
+          .card.blue-grey.darken-1
+            .card-content.white-text
+              span.card-title Яндекс.Погода
+              |             !{ yan }
+
+        .col.s12.m4
+          .card.blue-grey.darken-1
+            .card-content.white-text
+              span.card-title WorldWeather
+              |             !{ ww }
+
+    script.
+      $("div.climate-calendar-day__row").remove();
+      $("div.climate-calendar-day__detailed-climate").remove();
